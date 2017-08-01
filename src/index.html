@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Protree</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.0/css/intlTelInput.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.0/js/intlTelInput.js"></script>
+<script>
+  $("#demo").intlTelInput({
+autoHideDialCode: true,
+// add a placeholder in the input with an example number for the selected country
+autoPlaceholder: "polite",
+// modify the auto placeholder
+customPlaceholder: null,
+// append menu to a specific element
+dropdownContainer: "",
+// don't display these countries
+excludeCountries: [],
+// format the input value during initialisation
+formatOnDisplay: true,
+// geoIp lookup function
+geoIpLookup: null,
+// initial country
+initialCountry: "",
+// don't insert international dial codes
+nationalMode: true,
+// number type to use for placeholders
+placeholderNumberType: "MOBILE",
+// display only these countries
+onlyCountries: [],
+// the countries at the top of the list. defaults to united states and united kingdom
+preferredCountries: [ "us", "gb" ],
+// display the country dial code next to the selected flag so it's not part of the typed number
+separateDialCode: false,
+// specify the path to the libphonenumber script to enable validation/formatting
+utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.0/js/utils.js"});
+$("#demo").intlTelInput("destroy");
+var extension = $("#demo").intlTelInput("getExtension");
+var intlNumber = $("#demo").intlTelInput("getNumber");
+var numberType = $("#demo").intlTelInput("getNumberType");
+var countryData = $("#demo").intlTelInput("getSelectedCountryData");
+var isValid = $("#demo").intlTelInput("isValidNumber");
+$("#demo").intlTelInput("loadUtils", "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.0.0/js/utils.js");
+$("#demo").intlTelInput("selectCountry", "gb");
+$("#demo").intlTelInput("setNumber", "+44 7733 123 456");
+
+</script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
