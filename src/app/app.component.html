@@ -1,0 +1,131 @@
+  <div class="row wrapper">
+    
+    <!--Fill Form-->
+   <form class="col-sm-6 form-signin " [formGroup]="userForm" (ngSubmit)="submit(); companyName.value=''; companyId.value='';"><br>
+       <div class="panel panel-default">
+         <div class="panel-heading" style="background-color:#ac5353">
+        <div >
+            <h3 style="color:black; text-align:center;">{{title}}</h3>
+        </div>
+         </div>
+        <br>
+        <br>
+
+      <div class="panel-body">
+          <div class="form-group" >
+              <label class="col-md-5 control-label">Company Name </label>
+              <input type="text"  class="form-control col-md-6" formControlName="companyName" id="companyName" [(ngModel)]="company.companyName" #companyName/><br/>
+            <br/>
+              <div *ngIf="userForm.controls['companyName'].hasError('required') && userForm.controls['companyName'].touched" class="alert alert-danger">Company name is required</div>
+              
+          </div>
+        <br/>
+        
+        <div class="form-group" >
+              <label class="col-md-5 control-label">Company Id </label>
+              <input type="text" class="form-control col-md-6" formControlName="companyId" id="companyId" [(ngModel)]="company.companyId" #companyId />
+              <br/>  <br/>
+            
+              <div *ngIf="userForm.controls['companyId'].hasError('required') && userForm.controls['companyId'].touched" class="alert alert-danger">Company id is required.</div>
+            
+          </div>
+        <br/>
+      
+       <div class="form-group" >
+            <label class="col-md-5 control-label">Company Address </label>
+            <textarea  class="form-control col-md-6" formControlName="companyAddress" id="companyAddress" [(ngModel)]="company.companyAddress" #companyAddress></textarea><br/>
+            <br/>
+            <div *ngIf="userForm.controls['companyAddress'].hasError('required') && userForm.controls['companyAddress'].touched" class="alert alert-danger">Company address is required.</div>         
+        </div>
+        <br/>
+
+        <div class="form-group" >
+            <label class="col-md-5 control-label">Contact Phone No.</label>
+             <ngx-intl-tel-input [(value)]="company.contact" (change)="selectContact($event.target.value);" #contact></ngx-intl-tel-input> 
+             <br/><br/>
+                <div *ngIf="contactShowMsg"  class="alert alert-danger" >
+                {{contactMsg}}
+                </div>
+        </div>
+       <br/>
+
+        <div class="form-group" >
+            <label class="col-md-5 control-label">Company Email </label>
+            <input type="email" class="form-control col-md-6" formControlName="companyEmail" id="companyEmail" [(ngModel)]="company.companyEmail" #companyEmail />
+            <br/>  <br/>
+            <div *ngIf="userForm.controls['companyEmail'].hasError('required') && userForm.controls['companyEmail'].touched" class="alert alert-danger">Company email is required.</div>
+            <div *ngIf="userForm.controls['companyEmail'].hasError('pattern') && userForm.controls['companyEmail'].touched" class="alert alert-danger">Email pattern should be example@exaple.com.</div>
+      
+        </div>
+       <br/>
+
+       <div class=" form-group">
+           <label class="col-md-5 control-label">Company Category</label>
+           <select class="form-control col-md-4"  (change)="setClickedRow($event.target.value);" #campanyCategory >
+            <option value="-1" selected disabled>--select--</option>
+            <option value="0"  *ngFor="let co of companyCategoryList; let idx=index"   [value]="co.campanyCategory" id="companyCategory" >{{co.campanyCategory}}</option>
+           </select>
+            <br/>
+       </div>
+       <br/>
+
+       <div class=" form-group">
+           <label class="col-md-5 control-label">Company Logo</label>
+           <input type="file" name="myImage" accept="image/*" (change)="fileChangeEvent($event)" formControlName="componyLogo"/>
+           <br/>
+            <div *ngIf="logoShowMsg"  class="alert alert-danger" >
+                {{logoMsg}}
+                </div>
+       </div>
+      
+            <div *ngIf="showMsg"  class="alert alert-danger" >
+            {{msg}}
+           </div>
+
+   </div>
+
+    <div class="panel-footer" style="background-color:#ac5353">
+            <div  style=" text-align: center;">
+                <button [disabled]="!userForm.valid" style="color:black;" class="btn btn-binary" id="submitbutton" name="clickMe">Submit</button>
+      
+          </div>
+    </div>
+          </div>
+
+    </form>
+
+<!--List Here-->
+
+  <div class="col-sm-6 form-sign">
+      <div class="panel panel-default">
+          <div class="panel-heading" style="background-color:#ac5353">
+          <div >
+              <h3 style="color:black; text-align:center;">{{title1}}</h3>
+          </div>
+          </div>
+      </div>
+
+        <div *ngFor="let lt of companyList; let ind = index">
+          
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"  id="listgetname"></h3>
+              </div>
+              <div class="panel-body">
+                    <label style="width:135px">Company Name</label><span >:  {{ lt.companyName }}</span><br>
+                    <label style="width:135px">Company Id</label><span >:  {{ lt.companyId }}</span><br>
+                    <label style="width:135px">Company Address</label><span>:  {{ lt.companyAddress }}</span><br>
+                    <label style="width:135px" >Contact Phone No.</label><span>:  {{ lt.contact }}</span><br>
+                    <label style="width:135px">Company Email</label><span >:  {{ lt.companyEmail }}</span><br>
+                    <label style="width:135px">Company Category</label><span >:  {{ lt.companyCategory }}</span><br>
+                    <label style="width:135px">Company Logo</label>:  <img src= {{lt.companyLogo}} />
+              </div>
+              <div class="panel-footer">
+              
+              </div>
+          </div>
+          
+        </div>
+   </div>
+  
+</div>

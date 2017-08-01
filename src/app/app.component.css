@@ -1,0 +1,40 @@
+
+.wrapper {	
+	margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 550px;
+  padding: 15px 15px 15px;
+  margin: 0 auto;
+  background-color:		#F5F5F5;
+  border: 1px solid rgba(0,0,0,0.1);  
+ 
+}
+
+.form-sign {
+  max-width: 550px;
+  padding: 15px 15px 15px;
+  margin: 0 auto;
+  background-color:		#F5F5F5;
+  border: 1px solid rgba(0,0,0,0.1);  
+ 
+}
+.alert{
+    max-width: 430px;
+    margin-left: 15px;
+}
+
+img{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+
+.form-group label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+
