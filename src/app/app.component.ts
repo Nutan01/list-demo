@@ -27,7 +27,7 @@ export class AppComponent {
   // company category list
   companyCategoryList= [{"campanyCategory":"Option1"},{"campanyCategory":"Option2"},{"campanyCategory":"Option3"}];
 
-  //use for massage 
+  //use for message 
   msg:string;
   showMsg:boolean;
   contactMsg:string;
